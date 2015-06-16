@@ -1,0 +1,32 @@
+{
+  "name": "pathme",
+  "version": "0.0.1",
+  "description": "Manipulate object like a folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "_mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p418/pathme.git"
+  },
+  "keywords": [
+    "manipulate",
+    "object",
+    "folder",
+    "path",
+    "tool"
+  ],
+  "author": "p418",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/p418/pathme/issues"
+  },
+  "homepage": "https://github.com/p418/pathme#readme",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.7.6",
+    "mocha": "^2.2.5"
+  }
+}
