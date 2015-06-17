@@ -1,6 +1,6 @@
 {
   "name": "pathme",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Manipulate object like a folder",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/p418/pathme/issues"
   },
   "homepage": "https://github.com/p418/pathme#readme",
-  "readmeFilename" : "README.md",
+  "readmeFilename": "README.md",
   "devDependencies": {
     "chai": "^3.0.0",
     "gulp": "^3.9.0",
