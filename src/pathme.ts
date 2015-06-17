@@ -27,7 +27,8 @@ module PathMe
 		static sep: string = '/';
 		private cwd: Object = this.root;
 		private path: string[] = [PathMe.sep];
-
+		private pathStack : string[] = [];
+		
 		constructor(private root: Object){}
 
 
@@ -64,6 +65,48 @@ module PathMe
 			return this;
 		}
 
+	
+		/**
+		*
+		*@todo add options like -n, +N or -N
+		**/
+		pushd(path:string)
+		{
+			var aPath = this.resolve(path);
+			if(this.exists(path))
+			{
+				this.cd(path);
+				this.pathStack.push(this.pwd());
+			}
+			else
+				throw new ENOENT(aPath+' Doesnt exists');
+			
+			return this;
+		}
+
+
+		/**
+		*
+		*@todo add options like -n, +N or -N
+		**/
+		popd()
+		{
+			var path = this.pathStack.pop();
+			
+			if(path == void 0)
+				throw {message : 'Path stack is empty!'};
+			
+			
+			if(this.exists(path))
+			{
+				this.cd(path);
+			}
+			else
+				throw new ENOENT(path+' Doesnt exists');
+			return this;
+		}
+		
+
 		resolve(path: string): string
 		{
 				return  Path.resolve.call(null, this.toString(), path.toString());
@@ -94,6 +137,23 @@ module PathMe
 			}
 			return true;
 		}
+
+
+
+		mkdir(path:string)
+		{
+			var aPath  = this.resolve(path);
+			var parent = Path.dirname(aPath);
+			
+			if(this.exists(parent))
+			{
+				
+			}
+			
+			return false;
+		}
+
+
 
 		toString():string
 		{

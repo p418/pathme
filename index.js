@@ -23,6 +23,7 @@ var PathMe;
             this.root = root;
             this.cwd = this.root;
             this.path = [PathMe.sep];
+            this.pathStack = [];
         }
         PathMe.prototype._cd = function (attr) {
             if (attr == '' || attr == void 0) {
@@ -48,6 +49,35 @@ var PathMe;
             }
             return this;
         };
+        /**
+        *
+        *@todo add options like -n, +N or -N
+        **/
+        PathMe.prototype.pushd = function (path) {
+            var aPath = this.resolve(path);
+            if (this.exists(path)) {
+                this.cd(path);
+                this.pathStack.push(this.pwd());
+            }
+            else
+                throw new ENOENT(aPath + ' Doesnt exists');
+            return this;
+        };
+        /**
+        *
+        *@todo add options like -n, +N or -N
+        **/
+        PathMe.prototype.popd = function () {
+            var path = this.pathStack.pop();
+            if (path == void 0)
+                throw { message: 'Path stack is empty!' };
+            if (this.exists(path)) {
+                this.cd(path);
+            }
+            else
+                throw new ENOENT(path + ' Doesnt exists');
+            return this;
+        };
         PathMe.prototype.resolve = function (path) {
             return Path.resolve.call(null, this.toString(), path.toString());
         };
@@ -68,6 +98,13 @@ var PathMe;
                 });
             }
             return true;
+        };
+        PathMe.prototype.mkdir = function (path) {
+            var aPath = this.resolve(path);
+            var parent = Path.dirname(aPath);
+            if (this.exists(parent)) {
+            }
+            return false;
         };
         PathMe.prototype.toString = function () {
             return this.pwd();

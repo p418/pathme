@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if npm test; then
+	exit 1
+else	 
+    echo "Pre-commit test failed! Try again!"
+    exit 0	
+fi
+
+
