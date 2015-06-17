@@ -1,7 +1,7 @@
 var Path = require('path');
 
 
-module VPath
+module PathMe
 {
 	export declare class Error
 	{
@@ -22,17 +22,17 @@ module VPath
 	}
 	
 
-	export class VPath
+	export class PathMe
 	{
 		static sep: string = '/';
 		private cwd: Object = this.root;
-		private path: string[] = [VPath.sep];
+		private path: string[] = [PathMe.sep];
 
 		constructor(private root: Object){}
 
 
 
-		private _cd(attr:string):(VPath|Boolean)
+		private _cd(attr:string):(PathMe|Boolean)
 		{
 			if(attr == '' || attr == void 0)
 			{
@@ -53,7 +53,7 @@ module VPath
 
 		cd(path:string)
 		{
-			var newPath = this.resolve(path.toString()).split(VPath.sep);
+			var newPath = this.resolve(path.toString()).split(PathMe.sep);
 			
 			if(newPath.length)
 			{
@@ -77,7 +77,7 @@ module VPath
 
 		exists(path:string):boolean
 		{
-			var aPath = this.resolve(path).split(VPath.sep);
+			var aPath = this.resolve(path).split(PathMe.sep);
 			if(aPath.length)
 			{
 				var cwd = this.cwd;
@@ -104,6 +104,6 @@ module VPath
 
 module.exports = function(obj)
 {
-    return new VPath.VPath(obj);
+    return new PathMe.PathMe(obj);
 }
 
