@@ -1,6 +1,6 @@
 {
   "name": "pathme",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Manipulate object like a folder",
   "main": "index.js",
   "scripts": {
