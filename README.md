@@ -51,6 +51,22 @@ pathObj.cd('/').cwd == myObj;
 pathObj.cd('pi').cd('ka').cd('chu').cwd ==  myObj.pi.ka.chu;
 pathObj.cd('pi').cd('ka').cd('chu').cd('/') == myObj;
 
+
+//Shell user would be familiar with pushd/popd commands
+
+pathObj.pushd('/foo/bar').cwd == myObj.foo.bar; // move to foo/bar and save path to stack; 
+pathObj.pushd('/pi/ka').cwd == myObj.pi.ka; // move to /pi/ka and save path to stack; 
+pathObj.cd('/').push().cwd == myObj; // save current path to stack
+
+
+pathObj.cd('/pi/ka/chu').cwd ==  myObj.pi.ka.chu;
+
+
+pathObj.popd().cwd == myObj;
+pathObj.popd().cwd == myObj.pi.ka;
+pathObj.popd().cwd == myObj.foo.bar;
+
+
 ```
 
 

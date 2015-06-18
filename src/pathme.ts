@@ -72,15 +72,19 @@ module PathMe
 		**/
 		pushd(path:string)
 		{
-			var aPath = this.resolve(path);
-			if(this.exists(path))
-			{
-				this.cd(path);
-				this.pathStack.push(this.pwd());
-			}
-			else
-				throw new ENOENT(aPath+' Doesnt exists');
 			
+			if(path != void 0)
+			{
+				var aPath = this.resolve(path);
+				if(this.exists(path))
+				{
+					this.cd(path);
+				}
+				else
+					throw new ENOENT(aPath+' Doesnt exists');
+			}
+			
+			this.pathStack.push(this.pwd());
 			return this;
 		}
 
